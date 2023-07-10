@@ -28,7 +28,7 @@ function winner () {
 // Game over function 
 function gameOver () {
     if (playerCounter === 5 || computerCounter === 5) {
-        match_results.textContent = `Game is Over! The winner is ${winner()}`;
+        match_results.textContent = `Game Over! The winner is ${winner()}`;
         playerCounter = 0;
         computerCounter = 0;
     } 
@@ -52,27 +52,27 @@ function playRound (selection) {
         round_results.textContent = "It's a TIE";
         scores.textContent = `You: ${playerCounter} Computer: ${computerCounter}`;
     } else if (playerSelection === 'Rock' && computerSelection === 'Paper') {
-        round_results.textContent = 'Computer Wins';
+        round_results.textContent = 'Computer Won this Round';
         computerCounter++;
         scores.textContent = `You: ${playerCounter} Computer: ${computerCounter}`;
     } else if (playerSelection === 'Rock' && computerSelection === 'Scissors') {
-        round_results.textContent = 'You WON';
+        round_results.textContent = 'You WON this Round';
         playerCounter++;
         scores.textContent = `You: ${playerCounter} Computer: ${computerCounter}`;
     } else if (playerSelection === 'Paper' && computerSelection === 'Rock') {
-        round_results.textContent = 'You WON';
+        round_results.textContent = 'You WON this Round';
         playerCounter++;
         scores.textContent = `You: ${playerCounter} Computer: ${computerCounter}`;
     } else if (playerSelection === 'Paper' && computerSelection === 'Scissors') {
-        round_results.textContent = 'Computer Wins';
+        round_results.textContent = 'Computer Won this Round';
         computerCounter++;
         scores.textContent = `You: ${playerCounter} Computer: ${computerCounter}`;
     } else if (playerSelection === 'Scissors' && computerSelection === 'Rock') {
-        round_results.textContent = 'Computer Wins';
+        round_results.textContent = 'Computer Won this Round';
         computerCounter++;
         scores.textContent = `You: ${playerCounter} Computer: ${computerCounter}`;
     } else if (playerSelection === 'Scissors' && computerSelection === 'Paper') {
-        round_results.textContent = 'You WON';
+        round_results.textContent = 'You WON this Round';
         playerCounter++;
         scores.textContent = `You: ${playerCounter} Computer: ${computerCounter}`;
     }
