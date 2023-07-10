@@ -1,14 +1,38 @@
+let playerCounter = 0;
+let computerCounter = 0;
+
+const round_selection = document.querySelector(".round_selection");
+const round_results = document.querySelector(".round_results");
+const scores = document.querySelector(".scores");
+const match_results = document.querySelector(".match_results");
+
 const buttons = document.querySelectorAll('.btns');
 buttons.forEach(btn => {
     btn.addEventListener('click', (event) => {
         playRound(event.target.innerHTML);
+        gameOver();
+        console.log(`player is ${playerCounter} computer is ${computerCounter}`);
     })
 })
 
-const round_selection = document.querySelector(".round_selection");
-const match_results = document.querySelector(".match_results");
-const scores = document.querySelector(".scores");
 
+// winner function
+function winner () {
+    if (playerCounter === 5) {
+        return 'You'
+    } else if (computerCounter === 5) {
+        return 'The Computer'
+    }
+}
+
+// Game over function 
+function gameOver () {
+    if (playerCounter === 5 || computerCounter === 5) {
+        match_results.textContent = `Game is Over! The winner is ${winner()}`;
+        playerCounter = 0;
+        computerCounter = 0;
+    } 
+}
 
 // Function for the computer choice
 function compSelection () {
@@ -17,48 +41,41 @@ function compSelection () {
     return choices[output];
 }
 
-playerCounter = 0;
-computerCounter = 0;
-
-
 // Function for a game round
 function playRound (selection) {
+    match_results.textContent = '';
     const playerSelection = selection
     const computerSelection = compSelection();
 
     round_selection.textContent = `You Selected ${playerSelection} while Computer Selected ${computerSelection}`;
     if (playerSelection === computerSelection) {
-        match_results.textContent = "It's a TIE";
+        round_results.textContent = "It's a TIE";
+        scores.textContent = `You: ${playerCounter} Computer: ${computerCounter}`;
     } else if (playerSelection === 'Rock' && computerSelection === 'Paper') {
-        match_results.textContent = 'Computer Wins';
-        computerCounter++
-        scores.textContent = `You: ${playerCounter}
-        Computer: ${computerCounter}`;
+        round_results.textContent = 'Computer Wins';
+        computerCounter++;
+        scores.textContent = `You: ${playerCounter} Computer: ${computerCounter}`;
     } else if (playerSelection === 'Rock' && computerSelection === 'Scissors') {
-        match_results.textContent = 'You WON';
-        playerCounter++
-        scores.textContent = `You: ${playerCounter}
-        Computer: ${computerCounter}`;
+        round_results.textContent = 'You WON';
+        playerCounter++;
+        scores.textContent = `You: ${playerCounter} Computer: ${computerCounter}`;
     } else if (playerSelection === 'Paper' && computerSelection === 'Rock') {
-        match_results.textContent = 'You WON';
-        playerCounter++
-        scores.textContent = `You: ${playerCounter}
-        Computer: ${computerCounter}`;
+        round_results.textContent = 'You WON';
+        playerCounter++;
+        scores.textContent = `You: ${playerCounter} Computer: ${computerCounter}`;
     } else if (playerSelection === 'Paper' && computerSelection === 'Scissors') {
-        match_results.textContent = 'Computer Wins';
-        computerCounter++
-        scores.textContent = `You: ${playerCounter}
-        Computer: ${computerCounter}`;
+        round_results.textContent = 'Computer Wins';
+        computerCounter++;
+        scores.textContent = `You: ${playerCounter} Computer: ${computerCounter}`;
     } else if (playerSelection === 'Scissors' && computerSelection === 'Rock') {
-        match_results.textContent = 'Computer Wins';
-        computerCounter++
-        scores.textContent = `You: ${playerCounter}
-        Computer: ${computerCounter}`;
+        round_results.textContent = 'Computer Wins';
+        computerCounter++;
+        scores.textContent = `You: ${playerCounter} Computer: ${computerCounter}`;
     } else if (playerSelection === 'Scissors' && computerSelection === 'Paper') {
-        match_results.textContent = 'You WON';
-        playerCounter++
-        scores.textContent = `You: ${playerCounter}
-        Computer: ${computerCounter}`;
+        round_results.textContent = 'You WON';
+        playerCounter++;
+        scores.textContent = `You: ${playerCounter} Computer: ${computerCounter}`;
     }
 }
+
 
