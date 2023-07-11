@@ -1,6 +1,6 @@
 # Rock Paper Scissors
 
-### My attempt at creating a Rock Paper Scissors game using javascript as part of The Odin Project curriculum.
+#### My attempt at building a Rock Paper Scissors game using javascript as part of The Odin Project curriculum assignments.
 
 ### Checkout a live demo here: https://farisjamaan.github.io/rock-paper-scissors/
 
