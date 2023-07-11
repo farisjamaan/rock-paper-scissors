@@ -22,7 +22,7 @@ function gameOver () {
         playerCounter = 0;
         computerCounter = 0;
     } else if (computerCounter === 5) {
-        match_results.textContent = `You brought shame to humanity! The Computer won this game.`;
+        match_results.textContent = `Tough Luck! The Computer won this game.`;
         playerCounter = 0;
         computerCounter = 0;       
     }
