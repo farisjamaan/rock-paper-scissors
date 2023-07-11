@@ -1,7 +1,6 @@
 let playerCounter = 0;
 let computerCounter = 0;
 
-const round_selection = document.querySelector(".round_selection");
 const round_results = document.querySelector(".round_results");
 const scores = document.querySelector(".scores");
 const match_results = document.querySelector(".match_results");
@@ -16,22 +15,17 @@ buttons.forEach(btn => {
 })
 
 
-// winner function
-function winner () {
-    if (playerCounter === 5) {
-        return 'You'
-    } else if (computerCounter === 5) {
-        return 'The Computer'
-    }
-}
-
 // Game over function 
 function gameOver () {
-    if (playerCounter === 5 || computerCounter === 5) {
-        match_results.textContent = `Game Over! The winner is ${winner()}`;
+    if (playerCounter === 5) {
+        match_results.textContent = `Congratualtions! You Won the game`;
         playerCounter = 0;
         computerCounter = 0;
-    } 
+    } else if (computerCounter === 5) {
+        match_results.textContent = `You brought shame to humanity! The Computer won this game.`;
+        playerCounter = 0;
+        computerCounter = 0;       
+    }
 }
 
 // Function for the computer choice
@@ -47,32 +41,31 @@ function playRound (selection) {
     const playerSelection = selection
     const computerSelection = compSelection();
 
-    round_selection.textContent = `You Selected ${playerSelection} while Computer Selected ${computerSelection}`;
     if (playerSelection === computerSelection) {
-        round_results.textContent = "It's a TIE";
+        round_results.textContent = "It's a TIE!";
         scores.textContent = `You: ${playerCounter} Computer: ${computerCounter}`;
     } else if (playerSelection === 'Rock' && computerSelection === 'Paper') {
-        round_results.textContent = 'Computer Won this Round';
+        round_results.textContent = 'You lost! Paper beats Rock';
         computerCounter++;
         scores.textContent = `You: ${playerCounter} Computer: ${computerCounter}`;
     } else if (playerSelection === 'Rock' && computerSelection === 'Scissors') {
-        round_results.textContent = 'You WON this Round';
+        round_results.textContent = 'You WON! Rock beats Scissors';
         playerCounter++;
         scores.textContent = `You: ${playerCounter} Computer: ${computerCounter}`;
     } else if (playerSelection === 'Paper' && computerSelection === 'Rock') {
-        round_results.textContent = 'You WON this Round';
+        round_results.textContent = 'You WON! Paper beats Rock';
         playerCounter++;
         scores.textContent = `You: ${playerCounter} Computer: ${computerCounter}`;
     } else if (playerSelection === 'Paper' && computerSelection === 'Scissors') {
-        round_results.textContent = 'Computer Won this Round';
+        round_results.textContent = 'You Lost! Scissors beats Paper';
         computerCounter++;
         scores.textContent = `You: ${playerCounter} Computer: ${computerCounter}`;
     } else if (playerSelection === 'Scissors' && computerSelection === 'Rock') {
-        round_results.textContent = 'Computer Won this Round';
+        round_results.textContent = 'You lost! Rock beats Scissors';
         computerCounter++;
         scores.textContent = `You: ${playerCounter} Computer: ${computerCounter}`;
     } else if (playerSelection === 'Scissors' && computerSelection === 'Paper') {
-        round_results.textContent = 'You WON this Round';
+        round_results.textContent = 'You WON! Scissors beats Paper';
         playerCounter++;
         scores.textContent = `You: ${playerCounter} Computer: ${computerCounter}`;
     }
